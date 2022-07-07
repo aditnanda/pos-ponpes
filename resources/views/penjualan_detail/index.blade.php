@@ -237,7 +237,7 @@
             var diterima = $('#diterima').val();
             var bayar = $('#bayar').val();
             console.log(diterima,bayar);
-            if (diterima < bayar) {
+            if (diterima > bayar) {
                 alert('Tidak dapat menyimpan data, kolom Diterima harus sama dengan atau lebih dari kolom Bayar');
             }else{
                 $('.form-penjualan').submit();

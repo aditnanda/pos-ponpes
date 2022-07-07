@@ -12,7 +12,12 @@
 
                 </div>
                 <div class="col-md-8">
-                    <h2>LPPM UNTAG SURABAYA</h2>
+                    <h3>PONPES AT-TANWIR SAMPANG</h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12"">
+                    <h6>LPPM UNTAG SURABAYA</h6>
                 </div>
             </div>
             <hr style="height: 2px;">

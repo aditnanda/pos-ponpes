@@ -2,6 +2,5 @@
     <div class="pull-right hidden-xs">
         <b>Version</b> 1.1
     </div>
-    <strong>Copyright &copy; {{ date('Y') }} <a href="/">{{ $setting->nama_perusahaan }}</a>.</strong> LPPM UNTAG Surabaya, All rights
-    reserved.
+    <strong>Program Hibah Pengabdian Masyarakat Dari Direktur Riset, Teknologi, dan Pengabdian Kepada Masyarakat (DRTPM) Kemendikbudristek - 2022
 </footer>
