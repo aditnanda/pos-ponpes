@@ -17,6 +17,7 @@
                 <table class="table table-stiped table-bordered table-penjualan">
                     <thead>
                         <th width="5%">No</th>
+                        <th>No Struk</th>
                         <th>Tanggal</th>
                         <th>Kode Member</th>
                         <th>Total Item</th>
@@ -38,6 +39,7 @@
 @push('scripts')
 <script>
     let table, table1;
+    var level = '{{auth()->user()->level}}';
 
     $(function () {
         table = $('.table-penjualan').DataTable({
@@ -50,6 +52,7 @@
             },
             columns: [
                 {data: 'DT_RowIndex', searchable: false, sortable: false},
+                {data: 'id_penjualan'},
                 {data: 'tanggal'},
                 {data: 'kode_member'},
                 {data: 'total_item'},
@@ -84,19 +87,25 @@
     }
 
     function deleteData(url) {
-        if (confirm('Yakin ingin menghapus data terpilih?')) {
-            $.post(url, {
-                    '_token': $('[name=csrf-token]').attr('content'),
-                    '_method': 'delete'
-                })
-                .done((response) => {
-                    table.ajax.reload();
-                })
-                .fail((errors) => {
-                    alert('Tidak dapat menghapus data');
-                    return;
-                });
+        if (level == 2) {
+            alert('Tidak dapat menghapus data, silahkan mengubungi Admin');
+            
+        }else{
+            if (confirm('Yakin ingin menghapus data terpilih?')) {
+                $.post(url, {
+                        '_token': $('[name=csrf-token]').attr('content'),
+                        '_method': 'delete'
+                    })
+                    .done((response) => {
+                        table.ajax.reload();
+                    })
+                    .fail((errors) => {
+                        alert('Tidak dapat menghapus data');
+                        return;
+                    });
+            }
         }
+        
     }
 </script>
 @endpush

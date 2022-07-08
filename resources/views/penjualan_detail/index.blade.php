@@ -50,7 +50,7 @@
                             <div class="input-group">
                                 <input type="hidden" name="id_penjualan" id="id_penjualan" value="{{ $id_penjualan }}">
                                 <input type="hidden" name="id_produk" id="id_produk">
-                                <input type="text" class="form-control" name="kode_produk" id="kode_produk" onkeydown="search(this)">
+                                <input type="text" class="form-control" name="kode_produk" id="kode_produk" onkeydown="search_produk(this)">
                                 <span class="input-group-btn">
                                     <button onclick="tampilProduk()" class="btn btn-info btn-flat" type="button"><i class="fa fa-arrow-right"></i></button>
                                 </span>
@@ -96,7 +96,7 @@
                                 <label for="kode_member" class="col-lg-2 control-label">Member</label>
                                 <div class="col-lg-8">
                                     <div class="input-group">
-                                        <input type="text" class="form-control" id="kode_member" value="{{ $memberSelected->kode_member }}">
+                                        <input type="text" class="form-control" id="kode_member" value="{{ $memberSelected->kode_member }}" name="kode_member">
                                         <span class="input-group-btn">
                                             <button onclick="tampilMember()" class="btn btn-info btn-flat" type="button"><i class="fa fa-arrow-right"></i></button>
                                         </span>
@@ -217,6 +217,7 @@
             }, 300);
         });
         table2 = $('.table-produk').DataTable();
+        table2 = $('.table-member').DataTable();
 
         $(document).on('input', '.quantity', function () {
             let id = $(this).data('id');
@@ -368,7 +369,7 @@
             })
     }
 
-    function search(ele) {
+    function search_produk(ele) {
         if(event.key === 'Enter') {
             if (ele.value == '') {
                 alert('Kode Produk Tidak Boleh Kosong, Silahkan Klik Tombol Panah Biru atau Scan dengan Barcode Scanner');        
@@ -379,5 +380,25 @@
             }
         }
     }
+
+
+    $("#kode_member").keydown(function(event) {
+        if (event.keyCode == 13) {
+            // event.preventDefault();
+            var val = $("#kode_member").val();
+            var url = "{{url('/api/cek/member/')}}"+"/"+val;
+            $.get(url, function(data, status){
+                if (data.id_member != null) {
+                    pilihMember(data.id_member,data.kode_member);
+
+                }else{
+                    $('#id_member').val('');
+                    $('#diskon').val(0);
+                    loadForm(0);
+
+                }
+            });
+        }
+    });
 </script>
 @endpush

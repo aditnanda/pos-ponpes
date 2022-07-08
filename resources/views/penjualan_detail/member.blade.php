@@ -11,6 +11,7 @@
                     <thead>
                         <th><i class="fa fa-cog"></i></th>
                         <th width="5%">No</th>
+                        <th>Kode Member</th>
                         <th>Nama</th>
                         <th>Telepon</th>
                         <th>Alamat</th>
@@ -26,6 +27,7 @@
                                     </a>
                                 </td>
                                 <td width="5%">{{ $key+1 }}</td>
+                                <td>{{ $item->kode_member }}</td>
                                 <td>{{ $item->nama }}</td>
                                 <td>{{ $item->telepon }}</td>
                                 <td>{{ $item->alamat }}</td>
