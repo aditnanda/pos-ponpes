@@ -38,7 +38,7 @@
                 <br>
             </td>
             <td>Tanggal</td>
-            <td>: {{ tanggal_indonesia(date('Y-m-d')) }}</td>
+            <td>: {{date('H:i:s')}} {{ tanggal_indonesia(date('Y-m-d')) }}</td>
         </tr>
         <tr>
             <td>Kode Member</td>
@@ -78,7 +78,7 @@
             </tr>
             <tr>
                 <td colspan="6" class="text-right"><b>Diskon</b></td>
-                <td class="text-right"><b>{{ format_uang($penjualan->diskon) }}</b></td>
+                <td class="text-right"><b>- {{ format_uang($penjualan->total_harga * $penjualan->diskon / 100) }}</b></td>
             </tr>
             <tr>
                 <td colspan="6" class="text-right"><b>Total Bayar</b></td>

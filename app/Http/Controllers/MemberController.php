@@ -134,10 +134,15 @@ class MemberController extends Controller
         $datamember = collect(array());
         foreach ($request->id_member as $id) {
             $member = Member::find($id);
-            $datamember[] = $member;
+            if ($member) {
+                # code...
+                $datamember[] = $member;
+
+            }
         }
 
         $datamember = $datamember->chunk(2);
+        // dd($datamember);
         $setting    = Setting::first();
 
         $no  = 1;

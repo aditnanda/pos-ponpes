@@ -25,6 +25,7 @@
         .logo p {
             text-align: right;
             margin-right: 16pt;
+            color: black;
         }
         .logo img {
             position: absolute;
@@ -71,11 +72,12 @@
     <section style="border: 1px solid #fff">
         <table width="100%">
             @foreach ($datamember as $key => $data)
-                <tr>
                     @foreach ($data as $item)
+                    <tr>
+
                         <td class="text-center">
                             <div class="box">
-                                <img src="{{ public_path($setting->path_kartu_member) }}" alt="card" width="50%">
+                                <img src="{{ public_path($setting->path_kartu_member) }}" alt="card" width="100%">
                                 <div class="logo">
                                     <p>{{ $setting->nama_perusahaan }}</p>
                                     <img src="{{ public_path($setting->path_logo) }}" alt="logo">
@@ -93,8 +95,9 @@
                         @if (count($datamember) == 1)
                         <td class="text-center" style="width: 50%;"></td>
                         @endif
+                    </tr>
+
                     @endforeach
-                </tr>
             @endforeach
         </table>
     </section>

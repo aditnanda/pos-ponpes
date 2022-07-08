@@ -149,6 +149,40 @@
 <script>
     $('#kode_produk').focus();
 
+    document.querySelector('#kode_produk').addEventListener('keyup', function (e) {
+        // console.log(e.key);
+        if(e.key == " "){
+            $('#kode_produk').val('');
+            tampilProduk();
+        }
+        
+    })
+
+    document.querySelector('#modal-produk').addEventListener('keyup', function (e) {
+        // console.log(e.key);
+        if(e.key == "Escape"){
+            $('#kode_produk').val('');
+            $('#kode_produk').focus();
+        }
+    })
+
+    document.querySelector('#kode_member').addEventListener('keyup', function (e) {
+        // console.log(e.key);
+        if(e.key == " "){
+            $('#kode_member').val('');
+            tampilMember();
+        }
+        
+    })
+
+    document.querySelector('#modal-member').addEventListener('keyup', function (e) {
+        // console.log(e.key);
+        if(e.key == "Escape"){
+            $('#kode_member').val('');
+            $('#kode_member').focus();
+        }
+    })
+
     let table, table2;
 
     $(function () {
@@ -237,7 +271,7 @@
             var diterima = $('#diterima').val();
             var bayar = $('#bayar').val();
             console.log(diterima,bayar);
-            if (diterima > bayar) {
+            if (parseInt(diterima) < parseInt(bayar)) {
                 alert('Tidak dapat menyimpan data, kolom Diterima harus sama dengan atau lebih dari kolom Bayar');
             }else{
                 $('.form-penjualan').submit();

@@ -62,7 +62,7 @@
     </div>
     <br>
     <div>
-        <p style="float: left;">{{ date('d-m-Y') }}</p>
+        <p style="float: left;">{{date('H:i:s')}} {{ date('Y-m-d') }}</p>
         <p style="float: right">{{ strtoupper(auth()->user()->name) }}</p>
     </div>
     <div class="clear-both" style="clear: both;"></div>
@@ -95,7 +95,7 @@
         </tr>
         <tr>
             <td>Diskon:</td>
-            <td class="text-right">{{ format_uang($penjualan->diskon) }}</td>
+            <td class="text-right">- {{ format_uang($penjualan->total_harga * $penjualan->diskon / 100) }}</td>
         </tr>
         <tr>
             <td>Total Bayar:</td>

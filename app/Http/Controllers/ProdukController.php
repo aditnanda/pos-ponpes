@@ -154,7 +154,10 @@ class ProdukController extends Controller
         $dataproduk = array();
         foreach ($request->id_produk as $id) {
             $produk = Produk::find($id);
-            $dataproduk[] = $produk;
+            if ($produk) {
+                # code...
+                $dataproduk[] = $produk;
+            }
         }
 
         $no  = 1;
