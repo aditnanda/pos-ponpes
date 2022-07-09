@@ -43,13 +43,29 @@
             <div class="alert alert-info alert-dismissible">
                 <i class="fa fa-info icon"></i>
                 Petunjuk Tombol Cepat di Keyboard
-                <ul>
-                    <li>Tombol Tab : Untuk maju ke tombol atau komponen</li>
-                    <li>Tombol Tab + Shift : Untuk mundur ke tombol atau komponen</li>
-                    <li>Tombol Spasi : Untuk menampilkan list produk atau member di dalam kolom input</li>
-                    <li>Tombol Enter : Untuk memilih</li>
-                    <li>Tombol N : Untuk menyimpan transaksi</li>
-                </ul>
+                <table>
+                    <tr>
+                        <td>
+                            <ul>
+                                <li>Tombol Tab : Untuk maju ke tombol atau komponen</li>
+                                <li>Tombol Tab + Shift : Untuk mundur ke tombol atau komponen</li>
+                                <li>Tombol Spasi : Untuk menampilkan list produk atau member di dalam kolom input</li>
+                                <li>Tombol Enter : Untuk memilih</li>
+
+                            </ul>
+                        </td>
+                        <td>
+                            <ul>
+
+                                <li>Tombol Shift + N : Untuk menyimpan transaksi</li>
+                                <li>Tombol Shift + D : Untuk loncat ke kolom diterima</li>
+                                <li>Tombol Shift + M : Untuk loncat ke kolom Member</li>
+                                <li>Tombol Shift + B : Untuk loncat ke kolom Pilih Produk</li>
+                            </ul>
+                        </td>
+                    </tr>
+                </table>
+                
             </div>
             <div class="box-body">
                     
@@ -415,8 +431,8 @@
     document.onkeypress = function (e) {
         e = e || window.event;
         // use e.keyCode
-        // console.log(e.keyCode);
-        if (e.keyCode == 110) {
+        console.log(e.keyCode);
+        if (e.keyCode == 78) {
             var diterima = $('#diterima').val();
             var bayar = $('#bayar').val();
             // console.log(diterima,bayar);
@@ -425,6 +441,25 @@
             }else{
                 $('.form-penjualan').submit();
             }
+        }
+
+        //m
+        if (e.keyCode == 77) {
+            e.preventDefault();
+            $('#kode_member').focus();
+            
+        }
+
+        //d
+        if (e.keyCode == 68) {
+            e.preventDefault();
+            $('#diterima').focus();
+        }
+
+        //p
+        if (e.keyCode == 66) {
+            e.preventDefault();
+            $('#kode_produk').focus();
         }
     };
 </script>
