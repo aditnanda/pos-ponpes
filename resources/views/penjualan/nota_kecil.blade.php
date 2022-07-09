@@ -69,17 +69,17 @@
     <p>No: {{ tambah_nol_didepan($penjualan->id_penjualan, 10) }}</p>
     <p class="text-center">===================================</p>
     
-    <br>
     <table width="100%" style="border: 0;">
         @foreach ($detail as $item)
             <tr>
                 <td colspan="3">{{ $item->produk->nama_produk }}</td>
             </tr>
-            <tr>
+            <tr style="margin-bottom: 16px;">
                 <td>{{ $item->jumlah }} x {{ format_uang($item->harga_jual) }}</td>
                 <td></td>
                 <td class="text-right">{{ format_uang($item->jumlah * $item->harga_jual) }}</td>
             </tr>
+            
         @endforeach
     </table>
     <p class="text-center">-----------------------------------</p>
@@ -113,6 +113,9 @@
 
     <p class="text-center">===================================</p>
     <p class="text-center">-- TERIMA KASIH --</p>
+    <p><br><br><br></p>
+    <p class="text-center">===================================</p>
+
 
     <script>
         let body = document.body;

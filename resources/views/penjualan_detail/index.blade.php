@@ -40,6 +40,17 @@
 <div class="row">
     <div class="col-lg-12">
         <div class="box">
+            <div class="alert alert-info alert-dismissible">
+                <i class="fa fa-info icon"></i>
+                Petunjuk Tombol Cepat di Keyboard
+                <ul>
+                    <li>Tombol Tab : Untuk maju ke tombol atau komponen</li>
+                    <li>Tombol Tab + Shift : Untuk mundur ke tombol atau komponen</li>
+                    <li>Tombol Spasi : Untuk menampilkan list produk atau member di dalam kolom input</li>
+                    <li>Tombol Enter : Untuk memilih</li>
+                    <li>Tombol N : Untuk menyimpan transaksi</li>
+                </ul>
+            </div>
             <div class="box-body">
                     
                 <form class="form-produk">
@@ -271,7 +282,7 @@
         $('.btn-simpan').on('click', function () {
             var diterima = $('#diterima').val();
             var bayar = $('#bayar').val();
-            console.log(diterima,bayar);
+            // console.log(diterima,bayar);
             if (parseInt(diterima) < parseInt(bayar)) {
                 alert('Tidak dapat menyimpan data, kolom Diterima harus sama dengan atau lebih dari kolom Bayar');
             }else{
@@ -400,5 +411,21 @@
             });
         }
     });
+
+    document.onkeypress = function (e) {
+        e = e || window.event;
+        // use e.keyCode
+        // console.log(e.keyCode);
+        if (e.keyCode == 110) {
+            var diterima = $('#diterima').val();
+            var bayar = $('#bayar').val();
+            // console.log(diterima,bayar);
+            if (parseInt(diterima) < parseInt(bayar)) {
+                alert('Tidak dapat menyimpan data, kolom Diterima harus sama dengan atau lebih dari kolom Bayar');
+            }else{
+                $('.form-penjualan').submit();
+            }
+        }
+    };
 </script>
 @endpush
