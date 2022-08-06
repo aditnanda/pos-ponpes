@@ -35,7 +35,7 @@
                             <th>Merk</th>
                             <th>Harga Beli</th>
                             <th>Harga Jual</th>
-                            <th>Diskon</th>
+                            <th>Diskon (%)</th>
                             <th>Stok</th>
                             <th width="15%"><i class="fa fa-cog"></i></th>
                         </thead>
@@ -148,7 +148,7 @@
     }
 
     function deleteSelected(url) {
-        if ($('input:checked').length > 1) {
+        if ($('input:checked').length > 0) {
             if (confirm('Yakin ingin menghapus data terpilih?')) {
                 $.post(url, $('.form-produk').serialize())
                     .done((response) => {
@@ -179,5 +179,16 @@
                 .submit();
         }
     }
+</script>
+
+<script type="text/javascript">
+ 
+    $(".nominal").autoNumeric('init', {
+       aSep: '.', 
+       aDec: ',',
+       aForm: true,
+       vMax: '999999999',
+        vMin: '-999999999'
+   });
 </script>
 @endpush
