@@ -36,6 +36,11 @@ class ProdukController extends Controller
                     <input type="checkbox" name="id_produk[]" value="'. $produk->id_produk .'">
                 ';
             })
+            ->addColumn('select_qr', function ($produk) {
+                return '
+                    <input type="number" name="qr_produk[]" value="'. '1'.'">
+                ';
+            })
             ->addColumn('kode_produk', function ($produk) {
                 return '<span class="label label-success">'. $produk->kode_produk .'</span>';
             })
@@ -56,7 +61,7 @@ class ProdukController extends Controller
                 </div>
                 ';
             })
-            ->rawColumns(['aksi', 'kode_produk', 'select_all'])
+            ->rawColumns(['aksi', 'kode_produk', 'select_all','select_qr'])
             ->make(true);
     }
 
@@ -79,8 +84,12 @@ class ProdukController extends Controller
     public function store(Request $request)
     {
         $produk = Produk::latest()->first() ?? new Produk();
-        $request['kode_produk'] = 'P'. tambah_nol_didepan((int)$produk->id_produk +1, 6);
 
+        if ($request['kode_produk'] == null) {
+            # code...
+            $request['kode_produk'] = 'P'. tambah_nol_didepan((int)$produk->id_produk +1, 6);
+
+        }
         $produk = Produk::create($request->all());
 
         return response()->json('Data berhasil disimpan', 200);
@@ -152,6 +161,7 @@ class ProdukController extends Controller
     public function cetakBarcode(Request $request)
     {
         $dataproduk = array();
+        $dataprodukqr = array();
         foreach ($request->id_produk as $id) {
             $produk = Produk::find($id);
             if ($produk) {
@@ -160,8 +170,15 @@ class ProdukController extends Controller
             }
         }
 
+        foreach ($request->qr_produk as $id) {
+                # code...
+            $dataprodukqr[] = $id;
+        }
+
+        // dd($dataprodukqr,$dataproduk);
+
         $no  = 1;
-        $pdf = PDF::loadView('produk.barcode', compact('dataproduk', 'no'));
+        $pdf = PDF::loadView('produk.barcode', compact('dataproduk', 'no','dataprodukqr'));
         $pdf->setPaper('a4', 'potrait');
         return $pdf->stream('produk.pdf');
     }

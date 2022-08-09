@@ -28,6 +28,7 @@
                             <th width="5%">
                                 <input type="checkbox" name="select_all" id="select_all">
                             </th>
+                            <th width="5%">Banyaknya QR</th>
                             <th width="5%">No</th>
                             <th>Kode</th>
                             <th>Nama</th>
@@ -64,6 +65,7 @@
             },
             columns: [
                 {data: 'select_all', searchable: false, sortable: false},
+                {data: 'select_qr', searchable: false, sortable: false},
                 {data: 'DT_RowIndex', searchable: false, sortable: false},
                 {data: 'kode_produk'},
                 {data: 'nama_produk'},
@@ -181,14 +183,5 @@
     }
 </script>
 
-<script type="text/javascript">
- 
-    $(".nominal").autoNumeric('init', {
-       aSep: '.', 
-       aDec: ',',
-       aForm: true,
-       vMax: '999999999',
-        vMin: '-999999999'
-   });
-</script>
+
 @endpush
